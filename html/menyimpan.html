@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="add()">Tambah</button>
+    <br><br>
+
+    <div id="data"></div>
+
+    <script>
+        function add() {
+
+            var id = 0
+            var list = []
+
+            var data = {
+                name: 'John Due',
+                age: 25,
+                address: 'Palembang'
+            }
+
+            //save data to local storage
+            localStorage.setItem('personalData', JSON.stringify(data))
+
+            //get data
+            var list = JSON.parse(localStorage.getItem('personalData'))
+
+            // show data
+            document.getElementById('data').innerHTML = `<li> ${list.name} | ${list.age} | ${list.address}</li>`
+        }
+    </script>
+</body>
+
+</html>
