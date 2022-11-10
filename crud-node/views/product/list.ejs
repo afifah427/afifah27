@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row mt-5">
+            <div class="col-lg-12 col-md-12 text-center">
+                <h2>Node JS Express CRUD Opration - Nicesnippets.com</h2>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <!-- heading -->
+            <div class="col-lg-6 col-md-6 pt-3">
+                <h3>Product List</h3>
+            </div>
+
+            <div class="col-lg-6 col-md-6 text-end pt-3">
+                <a href="/products/add" class="btn btn-primary btn-sm">+ Add New Product</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- alert message -->
+            <div class="col-lg-12 col-md-12 mt-2">
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%- messages.error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+
+                        <% if (messages.success) { %>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Success!</strong>
+                                <%- messages.success %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                            <% } %>
+            </div>
+
+            <!-- print data -->
+            <div class="col-lg-12 col-md-12 mt-3">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Detail</th>
+                            <th width="150" class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <% if (data) { %>
+                        <% data.forEach(function(product){ %>
+                            <tr>
+                                <td>
+                                    <%= product.name %>
+                                </td>
+                                <td>
+                                    <%= product.price %>
+                                </td>
+                                <td>
+                                    <%= product.detail %>
+                                </td>
+                                <td class="text-center">
+                                    <a href='/products/edit/<%= product.id %>'
+                                        class="btn btn-info text-white btn-sm inline-block">Edit</a>
+                                    <form method="post" action="/products/delete/<%= product.id %>"
+                                        class="d-inline-block">
+                                        <input type="submit" name="delete" value='Delete' class="btn btn-danger btn-sm"
+                                            onClick="return confirm('Are you sure you want to delete?')" />
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                                <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <section class="content-header">
+        <h1>Employee | Edit</h1>
+    </section>
+
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <form action="/updatesave" method="post">
+                <% if(req) { %>
+                    <% print.forEach(function(user){ %>
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <input type="text" name="name" placeholder="enter name" class="form-control "
+                                    value=<%=user.name %>>
+                            </div>
+                            <div class="col-sm-9"> </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <input type="email" name="email" placeholder="enter email" class="form-control col-md-3"
+                                    value=<%=user.email %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-md-3">
+                                <input type="text" name="contact" placeholder="enter contact no"
+                                    class="form-control col-md-3" value=<%=user.contact %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-md-3">
+                                <input type="text" name="designation" placeholder="enter designation "
+                                    class="form-control col-md-3" value=<%=user.designation %>>
+                                <input type="hidden" name="id" value=<%=user.id%>>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-md-3">
+                                <input type="submit" class="form-control btn-success col-md-3" value="Save">
+                            </div>
+                        </div>
+            </form>
+            <% }) %>
+                <% } %>
+
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

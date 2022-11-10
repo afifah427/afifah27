@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>Show</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+    <section class="content-header">
+        <h1>Employee</h1>
+    </section>
+    <div class="content">
+        <div class="clearfix"></div>
+    </div>
+    <div class="box box-primary" style="margin:5px;padding:5px;">
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact No</th>
+                            <th>Designation</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% print.forEach(function(result) { %>
+                            <tr>
+                                <td>
+                                    <%= result.id %>
+                                </td>
+                                <td>
+                                    <%= result.name %>
+                                </td>
+                                <td>
+                                    <%= result.email %>
+                                </td>
+                                <td>
+                                    <%= result.contact %>
+                                </td>
+                                <td>
+                                    <%= result.designation %>
+                                </td>
+                                <td> <a href="/update?id=<%= result.id %>">Edit</a> <a
+                                        href="/delete?id=<%= result.id %>">Delete</a> </td>
+                            </tr>
+                            <% }); %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</body>
+
+</html>
